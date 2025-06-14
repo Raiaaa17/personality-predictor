@@ -40,7 +40,7 @@ ENV/
 .ipynb_checkpoints
 
 # Model files
-*.pkl
+# personality_model.pkl  # Uncomment this line to exclude the model file
 *.h5
 *.hdf5
 *.model
