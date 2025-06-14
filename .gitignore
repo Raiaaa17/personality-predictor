@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment variables
+.env
+
+# Local development
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Model files
+*.pkl
+*.h5
+*.hdf5
+*.model
+
+# Logs
+*.log
+
+# Local development
+instance/
+.webassets-cache
+
+# Flask instance folder
+instance/
+
+# Local development
+.env
+
+# Local development
+.env.local
+
+# Local development
+.env.development.local
+
+# Local development
+.env.test.local
+
+# Local development
+.env.production.local

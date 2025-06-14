@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        {% if show_result %}
+        <div class="alert alert-{{ 'success' if prediction == 'Extrovert' else 'info' }} text-center mb-4">
+            <h4 class="alert-heading">Prediction Result</h4>
+            <p>Based on your inputs, your personality type is:</p>
+            <h3 class="mb-0">{{ prediction }}</h3>
+        </div>
+        {% endif %}
+
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h2 class="h4 mb-4 text-center">Enter Your Information</h2>
+                <form action="{{ url_for('predict') }}" method="POST">
+                    <!-- Numerical Inputs -->
+                    <div class="row mb-4">
+                        <h5 class="text-muted mb-3">Social Behavior</h5>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="Time_spent_Alone" class="form-label">Time Spent Alone (hours/day)</label>
+                            <input type="number" class="form-control" id="Time_spent_Alone" name="Time_spent_Alone" 
+                                   min="0" max="24" step="0.5" required 
+                                   value="{{ form_data.Time_spent_Alone if form_data else '' }}">
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="Social_event_attendance" class="form-label">Social Events/Month</label>
+                            <input type="number" class="form-control" id="Social_event_attendance" 
+                                   name="Social_event_attendance" min="0" required
+                                   value="{{ form_data.Social_event_attendance if form_data else '' }}">
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="Going_outside" class="form-label">Times Going Out/Week</label>
+                            <input type="number" class="form-control" id="Going_outside" name="Going_outside" 
+                                   min="0" required
+                                   value="{{ form_data.Going_outside if form_data else '' }}">
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="Friends_circle_size" class="form-label">Close Friends Count</label>
+                            <input type="number" class="form-control" id="Friends_circle_size" 
+                                   name="Friends_circle_size" min="0" required
+                                   value="{{ form_data.Friends_circle_size if form_data else '' }}">
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="Post_frequency" class="form-label">Social Media Posts/Week</label>
+                            <input type="number" class="form-control" id="Post_frequency" 
+                                   name="Post_frequency" min="0" required
+                                   value="{{ form_data.Post_frequency if form_data else '' }}">
+                        </div>
+                    </div>
+                    
+                    <!-- Categorical Inputs -->
+                    <div class="row mb-4">
+                        <h5 class="text-muted mb-3">Preferences</h5>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="Stage_fear" class="form-label">Do you experience stage fear?</label>
+                            <select class="form-select" id="Stage_fear" name="Stage_fear" required>
+                                <option value="" disabled {% if not form_data %}selected{% endif %}>Select an option</option>
+                                <option value="Yes" {% if form_data and form_data.Stage_fear == 'Yes' %}selected{% endif %}>Yes</option>
+                                <option value="No" {% if form_data and form_data.Stage_fear == 'No' %}selected{% endif %}>No</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="Drained_after_socializing" class="form-label">Do you feel drained after socializing?</label>
+                            <select class="form-select" id="Drained_after_socializing" name="Drained_after_socializing" required>
+                                <option value="" disabled {% if not form_data %}selected{% endif %}>Select an option</option>
+                                <option value="Yes" {% if form_data and form_data.Drained_after_socializing == 'Yes' %}selected{% endif %}>Yes</option>
+                                <option value="No" {% if form_data and form_data.Drained_after_socializing == 'No' %}selected{% endif %}>No</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Predict My Personality</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

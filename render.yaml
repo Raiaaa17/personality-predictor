@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: personality-predictor
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn wsgi:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
+      - key: PYTHONUNBUFFERED
+        value: true
+      - key: GUNICORN_CMD_ARGS
+        value: "--workers=4 --worker-class=gevent --timeout 120"
+    plan: free
