@@ -1,4 +1,4 @@
-""
+"""
 WSGI config for Personality Predictor.
 
 This module contains the WSGI application used by the production server.
